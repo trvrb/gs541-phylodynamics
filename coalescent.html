@@ -74,17 +74,49 @@
 				</section>
 
 				<section>
-					<h3>Likelihood-based models that optimize branch lengths under constraints of genetic changes and sampling dates</h3>
+					<h3>Conversion between mutations and time</h3>
+					<img width="50%" src="images/clock_example.png">
+					<p>
+						Taxa A and B are separated by 1 mutation, where divergence is low relative to alignment length, ie 1 mutation in a 30 kb genome.
+						Evolutionary rate <i>&mu;</i> = 2 mutations per month.
+					</p>
+					<p>
+						This is a Poisson process in which <i>k</i> events are observed in an unknown amount of time <i>t</i>, but with known rate <i>&mu;</i>.
+						$k \sim Poisson(\mu \, t)$
+					</p>
+				</section>
+
+				<section>
+					<h3>Conversion between mutations and time</h3>
+					<img width="50%" src="images/clock_example.png">
+					<p>
+						With $k = 1$ and $\mu = 2$, we have $\mathrm{Pr}(k|t) = 2 \, t \, e^{-2 \, t}$
+					</p>
+					<img width="50%" src="images/clock_example_likelihood.png">
+				</section>
+
+				<section>
+					<h3>Conversion between mutations and time</h3>
+					<p>Likelihoods multiplied across branches and <i>&mu;</i> estimated</p>
 					<img class="stretch" src="images/treetime_inference.png">
 					<div class="citation">
 						<a href="https://academic.oup.com/ve/article/4/1/vex042/4794731">Sagulenko et al. 2018. Virus Evol.</a>
 					</div>
 				</section>
 
+				<section>
+					<h3>Conversion between mutations and time</h3>
+					<p>Approaches:</p>
+					<ul>
+						<li>Simple regression of time vs divergence (eg <a href="https://nextstrain.org/ncov/global?l=clock">root-to-tip plot</a>)</li>
+						<li>Maximum likelihood inference (eg <a href="https://github.com/neherlab/treetime">TreeTime</a>)</li>
+						<li>Bayesian inference (eg <a href="https://beast.community/">BEAST</a>)</li>
+					</ul>
+				</section>
+
 				<section data-background="#000">
 					<h2 class="title">The coalescent</h2>
 				</section>
-
 
 				<section data-transition="none">
 					<h3>Wright-Fisher process</h3>
