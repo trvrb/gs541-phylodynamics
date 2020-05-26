@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Phylodynamics introduction</title>
+
+		<meta name="author" content="Trevor Bedford">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal/css/theme/trvrb.css" id="theme">
+		<link rel="stylesheet" href="reveal/css/font-awesome/css/font-awesome.min.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+
+	</head>
+
+	<body>
+
+		<!-- <div style="position: absolute; top:10px; left:10px; z-index:100;">
+			<a href="http://bedford.io/projects/phylodynamics-lecture/">
+				<i class="fa fa-times-circle" style="color: #bbb;"></i>
+			</a>
+		</div> -->
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="#447ECC">
+					<h2 class="title">Phylodynamics introduction</h2>
+					<br>
+					<p class="title">
+					Trevor Bedford (@trvrb)
+					<br>
+					May 26, 2020
+					<br>
+					GS541 Introduction to Computational Molecular Biology
+				</section>
+
+				<section data-background="#000">
+					<h1 class="title">SARS-CoV-2</h1>
+				</section>
+
+				<section>
+					<img class="stretch" src="images/ncov_case_counts_map_2020_05_07.png">
+					<div class="citation">
+						<a href="https://www.nytimes.com/interactive/2020/us/coronavirus-us-cases.html">New York Times</a>
+					</div>
+				</section>
+
+				<section>
+					<img class="stretch" src="images/ncov_rt_2020_05_07_panels.png">
+					<div class="citation">
+						<a href="https://epiforecasts.io/covid">epiforecasts.io</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>
+						Significant fog of war. Genomic approaches offer orthogonal data source to understand the pandemic.
+					</h3>
+				</section>
+
+				<section data-transition="slide-in none-out">
+					<h3>Epidemic process</h3>
+					<img class="stretch" src="images/infection_tree_1.png">
+				</section>
+
+				<section data-transition="none">
+					<h3>Sample some individuals</h3>
+					<img class="stretch" src="images/infection_tree_2.png">
+				</section>
+
+				<section data-transition="none">
+					<h3>Sequence and determine phylogeny</h3>
+					<img class="stretch" src="images/infection_tree_3b.png">
+				</section>
+
+				<section data-transition="none-in slide-out">
+					<h3>Sequence and determine phylogeny</h3>
+					<img class="stretch" src="images/infection_tree_4b.png">
+				</section>
+
+				<section>
+					<h1>
+						<span class="c1s">N</span><span class="c2s">e</span><span class="c3s">x</span><span class="c4s">t</span><span class="c5s">s</span><span class="c6s">t</span><span class="c7s">r</span><span class="c8s">a</span><span class="c9s">i</span><span class="c10s">n</span>
+					</h1>
+					<p>Project to conduct real-time molecular epidemiology and evolutionary analysis of emerging epidemics</p>
+				</section>
+
+				<section>
+					<h3>Nextstrain architecture</h3>
+					<p>All code open source at <a class="off" href="https://github.com/nextstrain">github.com/nextstrain</a></p>
+					<p>Two central aims: (1) <i>rapid and flexible phylodynamic analysis</i> and <br> (2) <i>interactive visualization</i></p>
+					<img class="stretch" src="images/nextstrain_components.png">
+				</section>
+
+				<section style="text-align: left;">
+					<h3>Rapid build pipeline for 3000 SARS-CoV-2 genomes (timings are for a laptop)</h3>
+					<p>
+					<ul>
+						<li>Align with MAFFT <i>(~20 min)</i></li>
+						<li>Build ML tree with IQTREE <i>(~40 min)</i></li>
+						<li>Temporally resolve tree and geographic ancestry with TreeTime <i>(~50 min)</i></li>
+						<li>Total pipeline <i>(~2 hr)</i></li>
+					</ul>
+					</p>
+				</section>
+
+				<section style="text-align: left;">
+					<h3>Current data flow for SARS-CoV-2</h3>
+					<p>
+					<ol>
+						<li>Labs contribute directly to GISAID (now have >17k full genomes)</li>
+						<li>Nextstrain pulls a complete dataset from GISAID every 60 minutes</li>
+						<li>This triggers an automatic rebuild on Amazon Web Services</li>
+						<li>We manually update new lat/longs, etc...</li>
+						<li>We push this build online to nextstrain.org and tweet the update from @nextstrain</li>
+					</ol>
+					</p>
+					We do about one update per 12 hours via Seattle and Basel.
+					We were regularly getting 200k visitors per day to the site, now down to 50k.
+				</section>
+
+				<section data-transition="slide-in none-out">
+					<h3>Dec/Jan: Emergence of SARS-CoV-2 from Wuhan in ~Nov 2019</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_dec_jan.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section data-transition="none">
+					<h3>Jan/Feb: Spread within China and seeding elsewhere</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_jan_feb.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section data-transition="none">
+					<h3>Feb/Mar: Epidemic spread within North America and Europe</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_feb_mar.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section data-transition="none-in slide-out">
+					<h3>Mar/Apr: Continued growth, but decreasing transmission with social distancing measures</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_mar_apr.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Epidemic in the USA was introduced from China in late Jan and from Europe during Feb</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_usa_1.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Once in the US, virus spread rapidly</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_04_20_usa_2.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Single introduction ~Feb 1 quickly shows up throughout the country</h3>
+					<img class="stretch" src="images/ncov_tree_map_2020_05_07_wa_clade.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_washington.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_california.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_new_york.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_louisiana.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_texas.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>States show different patterns</h3>
+					<img class="stretch" src="images/ncov_states_2020_05_12_wisconsin.png">
+					<div class="citation">
+						<a href="https://nextstrain.org">nextstrain.org</a>
+					</div>
+				</section>
+
+				<section style="text-align: left;">
+					<h3>Generally, phylodynamic inference allows us to:</h3>
+					<p>
+					<ol>
+						<li>Infer changes in population size, ie prevalence, through time</li>
+						<li>Infer spatial movements of the epidemic and patterns of seeding</li>
+						<li>Infer differences in transmission rates between genetic variants</li>
+						<li>Support contact tracing investigations</li>
+					</ol>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+		<script src="reveal/js/config.js"></script>
+
+	</body>
+</html>
