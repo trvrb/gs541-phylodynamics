@@ -4,7 +4,7 @@
 
 Motivation: we can learn about outbreaks by sequencing infecting pathogens.
 
-[Lecture: Phylodynamics intro and application to SARS-CoV-2.](phylodynamics.html)
+[Lecture: Phylodynamics intro and application to SARS-CoV-2](http://bedford.io/projects/gs541-phylodynamics/phylodynamics.html)
 
 ### Lecture 1: Molecular clocks and the coalescent
 
