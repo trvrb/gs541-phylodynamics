@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Discrete traits and phylogeography</title>
+
+		<meta name="author" content="Trevor Bedford">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal/css/theme/trvrb.css" id="theme">
+		<link rel="stylesheet" href="reveal/css/font-awesome/css/font-awesome.min.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal/lib/css/zenburn.css">
+
+	</head>
+
+	<body>
+
+		<div style="position: absolute; top:10px; left:10px; z-index:100;">
+			<a href="http://bedford.io/projects/gs541-phylodynamics/">
+				<i class="fa fa-times-circle" style="color: #bbb; opacity: 0.2;"></i>
+			</a>
+		</div>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-background="#D4B13F">
+					<h2 class="title">Discrete traits and phylogeography</h2>
+					<br>
+					<p class="title">
+					Trevor Bedford (@trvrb)
+					<br>
+					May 28, 2020
+					<br>
+					GS541 Introduction to Computational Molecular Biology
+				</section>
+
+				<section data-background="#000">
+					<h2 class="title">Recap</h2>
+				</section>
+
+				<section>
+					<h3>Mutations tend to accumulate in a clock-like fashion</h3>
+					<img class="stretch" src="images/clock_flu_tree.png">
+				</section>
+
+				<section>
+					<h3>Allows conversion between branch length and time</h3>
+					<img class="stretch" src="images/clock_flu_timetree.png">
+				</section>
+
+				<section>
+					<h3>Population dynamics inferred through coalescence through time</h3>
+					<img class="stretch" src="images/skyline.png">
+					<div class="citation">
+						<a href="http://mbe.oxfordjournals.org/content/22/5/1185.short">
+							Drummond et al. 2005
+						</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Skyline model shows seasonality in flu</h3>
+					<img class="stretch" src="images/skyline_flu.png">
+					<div class="citation">
+						<a href="http://www.nature.com/nature/journal/v453/n7195/full/nature06945.html">
+							Rambaut et al. 2008
+						</a>
+					</div>
+				</section>
+
+				<section data-background="#000">
+					<h2 class="title">Inference of discrete traits</h2>
+				</section>
+
+				<section>
+					<h3>"Data" is a phylogeny and tip states</h3>
+					<p>States include nucleotides, amino acids, geo locations, hosts, etc...</p>
+					<img class="stretch" src="images/phylogeo_inference_data.png">
+				</section>
+
+				<section>
+					<h3>Model infers transition matrix and ancestral states</h3>
+					<img class="stretch" src="images/phylogeo_inference_model.png">
+				</section>
+
+				<section>
+					<h3>Rare transitions, short branches and many taxa increase confidence</h3>
+					<img class="stretch" src="images/phylogeo_inference_rare_transitions.png">
+				</section>
+
+				<section>
+					<h3>CTMC transition matrix</h3>
+					<img class="stretch" src="images/phylogeo_matrix.png">
+				</section>
+
+				<section>
+					<h3>Likelihood calculations as before</h3>
+				</section>
+
+				<section>
+					<h3><a href="https://www.biostat.washington.edu/sites/default/files/modules/2018_SISMID_12_14.pdf">Parameterization of CTMC transition matrix</a></h3>
+					<p>via Philippe Lemey and Marc Suchard</p>
+				</section>
+
+				<section data-background="#000">
+					<h2 class="title">Phylogeography</h2>
+				</section>
+
+				<section>
+					<h3>Nesting patterns are informative</h3>
+					<img class="stretch" src="images/phylogeo_inference_nesting.png">
+				</section>
+
+				<section>
+					<h3>Zika phylogeny infers an origin in northeast Brazil</h3>
+					<img class="stretch" src="images/phylogeo_zika_tree.png">
+					<div class="citation">
+						<a href="http://bedford.io/papers/faria-zika-in-brazil/">Faria et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+
+				<section>
+					<h3>Seasonality in influenza</h3>
+					<img class="stretch" src="images/flu_seasonality.png">
+					<div class="citation">
+						<a href="http://www.nature.com/nrg/journal/v8/n3/abs/nrg2053.html">
+							Nelson and Holmes 2007
+						</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Hypotheses of influenza circulation patterns</h3>
+					<img class="stretch" src="images/flu_circulation_hypotheses.png">
+				</section>
+
+				<section>
+					<h3>Influenza H3 genealogy for NY state viruses</h3>
+					<img class="stretch" src="images/flu_tree_ny_state.png">
+					<div class="citation">
+						<a href="http://www.nature.com/nature/journal/v453/n7195/abs/nature06945.html">
+							Rambaut et al 2008
+						</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Hypotheses of influenza circulation patterns</h3>
+					<img class="stretch" src="images/flu_circulation_hypotheses_remaining.png">
+				</section>
+
+				<section>
+					<h3>Sample H3N2 from around the world</h3>
+					<img class="stretch" src="images/flu_geo_h3_sample_map.png">
+				</section>
+
+				<section>
+					<h3>Treating geographic state as an evolving character</h3>
+					<img class="stretch" src="images/beast_geo_ctmc.png">
+				</section>
+
+				<section>
+					<h3>Phylogeny of H3 with geographic history</h3>
+					<img class="stretch" src="images/pathogen_phylogeny_flu.png">
+				</section>
+
+				<section>
+					<h3>Infer geographic transition matrix</h3>
+					<img class="stretch" src="images/flu_geo_h3_map.png">
+				</section>
+
+				<section data-background="images/flight_network.jpg">
+				</section>
+
+				<section>
+					<h3>Air travel predicts migration rates</h3>
+					<img class="stretch" src="images/flu_geo_predictors.png">
+					<div class="citation">
+						<a href="http://bedford.io/papers/lemey-air-travel/">
+							Lemey et al 2014
+						</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Geographic location of phylogeny trunk</h3>
+					<img class="stretch" src="images/flu_geo_h3_trunk.png">
+				</section>
+
+				<section>
+					<h3>Region-specific ancestry</h3>
+					<img class="stretch" src="images/flu_geo_h3_hist.png">
+				</section>
+
+				<section>
+					<h3>Phylogenies across subtypes / lineages</h3>
+					<img class="stretch" src="images/flu_geo_lineages_trees.jpg">
+				</section>
+
+				<section>
+					<h3>H3N2 phylogeny</h3>
+					<img class="stretch" src="images/pathogen_phylogeny_flu.png">
+				</section>
+
+				<section>
+					<h3>H1N1 phylogeny</h3>
+					<img class="stretch" src="images/flu_geo_h1_tree.png">
+				</section>
+
+				<section>
+					<h3>B/Vic phylogeny</h3>
+					<img class="stretch" src="images/flu_geo_vic_tree.png">
+				</section>
+
+				<section>
+					<h3>B/Yam phylogeny</h3>
+					<img class="stretch" src="images/flu_geo_yam_tree.png">
+				</section>
+
+				<section>
+					<h3>Ancestry patterns across lineages</h3>
+					<img class="stretch" src="images/flu_geo_lineages_histories.png">
+				</section>
+
+				<section>
+					<h3>Regional persistence patterns</h3>
+					<img class="stretch" src="images/flu_geo_lineages_persistence.png">
+				</section>
+
+				<section>
+					<h3>How to explain these differences?</h3>
+				</section>
+
+				<section>
+					<h3>Age distribution across viruses</h3>
+					<img class="stretch" src="images/flu_geo_age_of_infection.png">
+				</section>
+
+				<section>
+					<h3>Air travel differences between adults and children</h3>
+					<img class="stretch" src="images/flu_geo_air_travel_by_age.png">
+				</section>
+
+				<section>
+					<h3>Epidemiological model of varying rates of antigenic drift</h3>
+					<img class="stretch" src="images/flu_geo_model_dynamics.jpg">
+				</section>
+
+				<section>
+					<h3>Results of varying antigenic drift</h3>
+					<img class="stretch" src="images/flu_geo_model_results.png">
+				</section>
+
+				<section>
+					<h3>Sequencing of 1610 Ebola virus genomes collected during the 2013-2016 West African epidemic</h3>
+					<img class="stretch" src="images/ebola_mig_sampling.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Sequenced genomes were representative of spatiotemporal diversity</h3>
+					<img class="stretch" src="images/ebola_mig_sampling_corr.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Phylogenetic reconstruction of epidemic</h3>
+					<img class="stretch" src="images/ebola_mig_tree.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section data-background="images/ebola_mig_tree.png">
+				</section>
+
+				<section>
+					<h3>Tracking migration events</h3>
+					<img class="stretch" src="images/ebola_mig_geo_tree.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Factors influencing migration rates</h3>
+					<img class="stretch" src="images/ebola_mig_glm_factors.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Effect of borders on migration rates</h3>
+					<img class="stretch" src="images/ebola_mig_border_effects.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Spatial structure at the country level</h3>
+					<img class="stretch" src="images/ebola_mig_exploded_tree.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Substantial mixing at the regional level</h3>
+					<img class="stretch" src="images/ebola_mig_exploded_tree_regions_sierra_leone.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Each introduction results in a minor outbreak</h3>
+					<img class="stretch" src="images/ebola_mig_cluster_distributions.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Regional outbreaks due to multiple introductions</h3>
+					<img class="stretch" src="images/ebola_mig_clusters_sierra_leone.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Regional outbreaks due to multiple introductions</h3>
+					<img class="stretch" src="images/ebola_mig_stacked_epi_curve.png">
+					<div class="citation">
+						<a href="/papers/dudas-ebola-epidemic-spread/">Dudas et al. 2017. Nature.</a>
+					</div>
+				</section>
+
+				<section data-background="#000">
+					<h2 class="title">Reservoir species and host jumps</h2>
+				</section>
+
+				<section>
+					<h3>Influenza has a reservoir in wild birds, spillovers sometimes become endemic</h3>
+					<img class="stretch" src="images/spillover_influenza_tree.png">
+				</section>
+
+				<section>
+					<h3>Each Ebola outbreak derives from a separate spillover event</h3>
+					<img class="stretch" src="images/spillover_ebola_tree.png">
+					<div class="citation">
+						<a href="http://science.sciencemag.org/content/345/6202/1369">
+							Gire et al. 2014. Science.
+						</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>MERS-CoV has frequent spillover events, but limited human-to-human transmission</h3>
+					<img class="stretch" src="images/spillover_mers_tree.png">
+					<div class="citation">
+						<a href="http://bedford.io/papers/dudas-mers-structure/">
+							Dudas et al. 2017. bioRxiv.
+						</a>
+					</div>
+				</section>
+
+				<section data-background="#000">
+					<h2 class="title">Reassortment and recombination</h2>
+				</section>
+
+				<section>
+					<h3>Influenza B reassorts across segments</h3>
+					<img class="stretch" src="images/recombination_flu_b_trees.png">
+					<div class="citation">
+						<a href="http://bedford.io/papers/dudas-flub-reassortment/">Dudas et al. 2015. Mol Biol Evol.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Reassortment splits gene constellations</h3>
+					<img class="stretch" src="images/recombination_flu_b_railway.png">
+					<div class="citation">
+						<a href="http://bedford.io/papers/dudas-flub-reassortment/">Dudas et al. 2015. Mol Biol Evol.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Abundant recombination during within-host HIV evolution</h3>
+					<img class="stretch" src="images/recombination_hiv_trees.png">
+					<div class="citation">
+						<a href="https://elifesciences.org/articles/11282">Zanini et al. 2015. eLife.</a>
+					</div>
+				</section>
+
+				<section>
+					<h3>Linkage disequilibrium decays with physical distance</h3>
+					<img class="stretch" src="images/recombination_hiv_ld.png">
+					<div class="citation">
+						<a href="https://elifesciences.org/articles/11282">Zanini et al. 2015. eLife.</a>
+					</div>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="reveal/lib/js/head.min.js"></script>
+		<script src="reveal/js/reveal.min.js"></script>
+		<script src="reveal/js/config.js"></script>
+
+	</body>
+</html>

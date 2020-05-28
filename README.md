@@ -10,4 +10,4 @@ Motivation: we can learn about outbreaks by sequencing infecting pathogens.
 
 ## Day 2
 
-Lecture 2 to be added.
+[Lecture 2: Discrete traits and phylogeography](http://bedford.io/projects/gs541-phylodynamics/phylogeography.html)
